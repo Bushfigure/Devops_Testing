@@ -325,7 +325,7 @@
 <body>
 
   <header>
-    <div class="logo">DDG Nova</div>
+    <div class="logo">Good Buy</div>
     <nav>
       <a href="#">Home</a>
       <a href="#">Products</a>
@@ -336,7 +336,7 @@
   </header>
 
   <section class="hero">
-    <h1>Sharp Smart Innovation</h1>
+    <h1>Where Gadgets live</h1>
     <p>Use gadgets that transform your everyday life for Kings and Queens</p>
     <button class="btn" onclick="openModal()">Join Our Newsletter</button>
   </section>
@@ -346,24 +346,72 @@
       <img class="card-img" src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&w=800&q=80" alt="Smartwatch">
       <div class="card-content">
         <h3>SmartWatch X</h3>
-        <div class="price">$249.99</div>
-        <button class="card-btn" onclick="addToCart('SmartWatch X', 249.99)">Add to Cart</button>
+        <div class="price" data-price="249000"></div>
+        <button class="card-btn" onclick="addToCart('SmartWatch X', 249000)">Add to Cart</button>
       </div>
     </div>
     <div class="card">
       <img class="card-img" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80" alt="Headphones">
       <div class="card-content">
         <h3>Noise-Cancel Pro</h3>
-        <div class="price">$179.99</div>
-        <button class="card-btn" onclick="addToCart('Noise-Cancel Pro', 179.99)">Add to Cart</button>
+        <div class="price" data-price="179000"></div>
+        <button class="card-btn" onclick="addToCart('Noise-Cancel Pro', 179000)">Add to Cart</button>
       </div>
     </div>
     <div class="card">
       <img class="card-img" src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=800&q=80" alt="Drone">
       <div class="card-content">
         <h3>4K Drone Pro</h3>
-        <div class="price">$499.99</div>
-        <button class="card-btn" onclick="addToCart('4K Drone Pro', 499.99)">Add to Cart</button>
+        <div class="price" data-price="499000"></div>
+        <button class="card-btn" onclick="addToCart('4K Drone Pro', 499000)">Add to Cart</button>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img" src="https://images.unsplash.com/photo-1510557880182-3d4d3b9b5d26?auto=format&fit=crop&w=800&q=80" alt="Wireless Charger">
+      <div class="card-content">
+        <h3>Fast Wireless Charger</h3>
+        <div class="price" data-price="89000"></div>
+        <button class="card-btn" onclick="addToCart('Fast Wireless Charger', 89000)">Add to Cart</button>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80" alt="Laptop">
+      <div class="card-content">
+        <h3>UltraBook Pro 14</h3>
+        <div class="price" data-price="350000"></div>
+        <button class="card-btn" onclick="addToCart('UltraBook Pro 14', 350000)">Add to Cart</button>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img" src="https://images.unsplash.com/photo-1519181245277-cffeb31da1a7?auto=format&fit=crop&w=800&q=80" alt="Camera">
+      <div class="card-content">
+        <h3>Mirrorless Camera Z</h3>
+        <div class="price" data-price="220000"></div>
+        <button class="card-btn" onclick="addToCart('Mirrorless Camera Z', 220000)">Add to Cart</button>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img" src="https://images.unsplash.com/photo-1518444022312-2f9d4f49b0e1?auto=format&fit=crop&w=800&q=80" alt="Tablet">
+      <div class="card-content">
+        <h3>Pro Tablet 11</h3>
+        <div class="price" data-price="150000"></div>
+        <button class="card-btn" onclick="addToCart('Pro Tablet 11', 150000)">Add to Cart</button>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img" src="https://images.unsplash.com/photo-1593642634367-d91a135587b5?auto=format&fit=crop&w=800&q=80" alt="Gaming Console">
+      <div class="card-content">
+        <h3>NextGen Console</h3>
+        <div class="price" data-price="380000"></div>
+        <button class="card-btn" onclick="addToCart('NextGen Console', 380000)">Add to Cart</button>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img" src="https://images.unsplash.com/photo-1580894894513-2c4a9a7a8bf1?auto=format&fit=crop&w=800&q=80" alt="Bluetooth Speaker">
+      <div class="card-content">
+        <h3>Portable Bluetooth Speaker</h3>
+        <div class="price" data-price="45000"></div>
+        <button class="card-btn" onclick="addToCart('Portable Bluetooth Speaker', 45000)">Add to Cart</button>
       </div>
     </div>
   </section>
@@ -409,6 +457,18 @@
       document.body.appendChild(notification);
       setTimeout(() => notification.remove(), 3000);
     }
+
+    // Format integers as Naira with comma separators and populate price elements
+    function formatCurrency(amount) {
+      return '₦' + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.price').forEach(function(el) {
+        const p = el.getAttribute('data-price');
+        if (p !== null) el.textContent = formatCurrency(Number(p));
+      });
+    });
 
     function openModal() {
       document.getElementById('modal').style.display = 'flex';
